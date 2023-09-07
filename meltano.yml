@@ -1,0 +1,27 @@
+version: 1
+default_environment: dev
+project_id: 5c06691a-b13a-4514-b633-c68d580eff74
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-notion
+    variant: airbyte
+    config:
+      airbyte_spec:
+        image: renehlavova/source-notion
+        tag: v7
+      airbyte_config:
+        start_date: ''
+        credentials.auth_type: token
+    select:
+    - blocks.*
+    - databases.*
+    - users.*
+    - pages.*
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
