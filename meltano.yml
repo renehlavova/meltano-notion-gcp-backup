@@ -21,6 +21,19 @@ plugins:
     - databases.*
     - users.*
     - pages.*
+    metadata:
+      blocks:
+        table-key-properties: [id]
+        replication-method: INCREMENTAL
+        replication-key: last_edited_time
+      databases:
+        table-key-properties: [id]
+        replication-method: INCREMENTAL
+        replication-key: last_edited_time
+      pages:
+        table-key-properties: [id]
+        replication-method: INCREMENTAL
+        replication-key: last_edited_time
   loaders:
   - name: target-jsonl
     variant: andyh1203
